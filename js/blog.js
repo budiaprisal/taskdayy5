@@ -25,16 +25,19 @@ function addBlog() {
   if (js) {
     js = document.getElementById("js").value;
   }
-  // untuk membuat url gambar, agar tampil
+
+  if (image.length == 0) {
+    return alert("Gambar wajib di input !!!");
+  }
+
   image = URL.createObjectURL(image[0]);
-  console.log(image);
 
   let blog = {
     title,
     content,
     image,
-    postAt: "15 September 2022",
-    author: "Samsul Rijal",
+    postAt: "18 September 2022",
+    author: "budi aprisal",
     nodejs,
     react,
     reacteurope,
@@ -45,7 +48,6 @@ function addBlog() {
   };
 
   dataBlog.push(blog);
-  console.log(dataBlog);
 
   renderBlog();
 }
@@ -54,8 +56,6 @@ function renderBlog() {
   document.getElementById("contents").innerHTML = "";
 
   for (let index = 0; index < dataBlog.length; index++) {
-    console.log(dataBlog[index]);
-
     document.getElementById("contents").innerHTML += `
         
             <div class="blog-list-item ">
@@ -73,7 +73,7 @@ function renderBlog() {
                     Duration : ${dataBlog[index].duration} 
                 </div>
                 <p>
-                    ${dataBlog[index].contents}
+                    ${dataBlog[index].content}
                 </p>
                 <i class="fa-brands fa-${dataBlog[index].nodejs} fa-4x"></i>
                 <i class="fa-brands fa-${dataBlog[index].react} fa-4x"></i>
